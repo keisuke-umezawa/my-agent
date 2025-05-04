@@ -1,4 +1,4 @@
-name: CI
+name: E2E Tests
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  e2e-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,13 +22,11 @@ jobs:
     - name: Install dependencies
       run: npm ci
       
-    - name: Type check
-      run: npm run typecheck
-      
-    - name: Lint
-      run: npm run lint
-      
     - name: Build
       run: npm run build
       
-    # Playwright tests moved to separate e2e workflow
+    - name: Install Playwright browsers
+      run: npx playwright install --with-deps chromium
+      
+    - name: Run E2E tests
+      run: npx playwright test tests/e2e
