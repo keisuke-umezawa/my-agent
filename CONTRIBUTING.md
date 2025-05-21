@@ -1,85 +1,85 @@
-# 開発環境のセットアップ
+# Development Environment Setup
 
-このドキュメントでは、My Agentプロジェクトの開発環境のセットアップ方法について説明します。
+This document explains how to set up the development environment for the My Agent project.
 
-## 目次
+## Table of Contents
 
-- [前提条件](#前提条件)
-- [開発環境のセットアップ](#開発環境のセットアップ)
-  - [DevContainerを使用する方法](#devcontainerを使用する方法)
-  - [ローカル環境でのセットアップ](#ローカル環境でのセットアップ)
-- [開発ワークフロー](#開発ワークフロー)
-- [テスト](#テスト)
-- [コードスタイル](#コードスタイル)
+- [Prerequisites](#prerequisites)
+- [Development Environment Setup](#development-environment-setup)
+  - [Using DevContainer](#using-devcontainer)
+  - [Local Environment Setup](#local-environment-setup)
+- [Development Workflow](#development-workflow)
+- [Testing](#testing)
+- [Code Style](#code-style)
 
-## 前提条件
+## Prerequisites
 
-開発を始める前に、以下のツールがインストールされていることを確認してください：
+Before you begin development, ensure you have the following tools installed:
 
 - [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/) (バージョン20以上)
-- [npm](https://www.npmjs.com/) (Node.jsに付属)
+- [Node.js](https://nodejs.org/) (version 20 or higher)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
 
-DevContainerを使用する場合は、以下も必要です：
+If you plan to use DevContainer, you'll also need:
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Docker](https://www.docker.com/)
-- [VS Code Remote - Containers拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+- [VS Code Remote - Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 
-## 開発環境のセットアップ
+## Development Environment Setup
 
-### DevContainerを使用する方法
+### Using DevContainer
 
-DevContainerを使用すると、すべての依存関係が設定された一貫した開発環境で作業できます。
+Using DevContainer provides a consistent development environment with all dependencies pre-configured.
 
-1. リポジトリをクローンします：
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/keisuke-umezawa/my-agent.git
 cd my-agent
 ```
 
-2. VS Codeでプロジェクトを開きます：
+2. Open the project in VS Code:
 
 ```bash
 code .
 ```
 
-3. VS Codeが`.devcontainer`フォルダを検出し、コンテナで再度開くように提案します。「Reopen in Container」をクリックします。
-   - または、コマンドパレット（F1）を開き、「Remote-Containers: Reopen in Container」を選択します。
+3. VS Code will detect the `.devcontainer` folder and suggest reopening in a container. Click "Reopen in Container".
+   - Alternatively, open the command palette (F1) and select "Remote-Containers: Reopen in Container".
 
-4. VS Codeがコンテナをビルドして開くのを待ちます。これには数分かかる場合があります。
+4. Wait for VS Code to build and open the container. This may take a few minutes.
 
-これで、すべての必要な拡張機能と依存関係がインストールされた開発環境が整いました。
+You now have a development environment with all necessary extensions and dependencies installed.
 
-### ローカル環境でのセットアップ
+### Local Environment Setup
 
-DevContainerを使用しない場合は、以下の手順でローカル環境をセットアップできます：
+If you prefer not to use DevContainer, you can set up your local environment with the following steps:
 
-1. リポジトリをクローンします：
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/keisuke-umezawa/my-agent.git
 cd my-agent
 ```
 
-2. 依存関係をインストールします：
+2. Install dependencies:
 
 ```bash
 npm install
 ```
 
-3. 開発サーバーを起動します：
+3. Start the development server:
 
 ```bash
 npm run dev
 ```
 
-これで、[http://localhost:5173](http://localhost:5173)でアプリケーションにアクセスできます。
+You can now access the application at [http://localhost:5173](http://localhost:5173).
 
-## 開発ワークフロー
+## Development Workflow
 
-1. 新しい機能やバグ修正に取り組む前に、最新の`main`ブランチから新しいブランチを作成してください：
+1. Before working on a new feature or bug fix, create a new branch from the latest `main` branch:
 
 ```bash
 git checkout main
@@ -87,57 +87,57 @@ git pull
 git checkout -b feature/your-feature-name
 ```
 
-2. コードを変更し、定期的にコミットします：
+2. Make changes to the code and commit them regularly:
 
 ```bash
-git add <変更したファイル>
-git commit -m "変更内容の説明"
+git add <changed files>
+git commit -m "Description of changes"
 ```
 
-3. 変更をプッシュします：
+3. Push your changes:
 
 ```bash
 git push origin feature/your-feature-name
 ```
 
-4. GitHubでプルリクエストを作成します。
+4. Create a pull request on GitHub.
 
-## テスト
+## Testing
 
-プロジェクトには以下のテストタイプがあります：
+The project includes the following types of tests:
 
-1. ユニットテスト：
+1. Unit tests:
 
 ```bash
 npm run test:unit
 ```
 
-2. E2Eテスト：
+2. E2E tests:
 
 ```bash
 npm run test
 ```
 
-3. 型チェック：
+3. Type checking:
 
 ```bash
 npm run typecheck
 ```
 
-4. リント：
+4. Linting:
 
 ```bash
 npm run lint
 ```
 
-プルリクエストを作成する前に、すべてのテストが通過することを確認してください。
+Make sure all tests pass before creating a pull request.
 
-## コードスタイル
+## Code Style
 
-このプロジェクトでは、ESLintとPrettierを使用してコードスタイルを強制しています。コードをコミットする前に、以下のコマンドを実行してコードスタイルを確認してください：
+This project uses ESLint and Prettier to enforce code style. Before committing your code, run the following command to check your code style:
 
 ```bash
 npm run lint
 ```
 
-VS CodeでDevContainerを使用している場合、ファイル保存時に自動的にフォーマットが適用されます。
+If you're using DevContainer with VS Code, formatting will be automatically applied when you save files.
