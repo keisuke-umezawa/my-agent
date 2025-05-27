@@ -40,5 +40,8 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Make poetry environment
+        run: pip install poetry
+
       - name: Install dependencies
         run: poetry install
