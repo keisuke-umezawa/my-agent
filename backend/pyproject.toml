@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "my-agent-backend"
+version = "0.1.0"
+description = "FastAPI backend for my-agent"
+authors = ["Devin AI"]
+readme = "README.md"
+packages = [{include = "app"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.115.0"
+uvicorn = "^0.34.0"
+pydantic = "^2.11.0"
+python-dotenv = "^1.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
