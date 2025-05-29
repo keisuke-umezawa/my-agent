@@ -26,7 +26,7 @@ services:
     restart: unless-stopped
 
   e2e:
-    image: mcr.microsoft.com/playwright:v1.52.0-focal
+    image: mcr.microsoft.com/playwright:v1.52.0
     depends_on:
       - frontend
       - backend
