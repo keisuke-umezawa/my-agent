@@ -6,8 +6,7 @@ WORKDIR /app
 RUN pip install poetry==1.7.1
 
 # Copy pyproject.toml and poetry.lock (if exists)
-COPY pyproject.toml ./
-COPY poetry.lock* ./
+COPY pyproject.toml poetry.lock* ./
 
 # Configure poetry to not create a virtual environment
 RUN poetry config virtualenvs.create false
