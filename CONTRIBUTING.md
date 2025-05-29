@@ -172,6 +172,8 @@ npm run test:unit
 2. E2E tests:
 
 ```bash
+# From the e2e directory
+cd e2e
 npm run test
 ```
 

@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:80"
+    environment:
+      - VITE_API_URL=http://backend:8000
+    networks:
+      - e2e-network
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+    networks:
+      - e2e-network
+    restart: unless-stopped
+
+  e2e:
+    image: mcr.microsoft.com/playwright:v1.52.0-focal
+    depends_on:
+      - frontend
+      - backend
+    volumes:
+      - ./:/e2e
+      - ../frontend/node_modules/@playwright:/e2e/node_modules/@playwright
+    working_dir: /e2e
+    command: npx playwright test
+    networks:
+      - e2e-network
+
+networks:
+  e2e-network:
+    driver: bridge
