@@ -34,7 +34,7 @@ services:
       - ./:/e2e
       - ../frontend/node_modules/@playwright:/e2e/node_modules/@playwright
     working_dir: /e2e
-    command: npx playwright test
+    command: npm install && npx playwright test
     networks:
       - e2e-network
 
