@@ -9,11 +9,8 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint --ext .ts,.tsx .",
     "preview": "vite preview",
-    "test": "playwright test",
     "test:unit": "vitest run",
-    "test:unit:watch": "vitest",
-    "test:ui": "playwright test --ui",
-    "test:headed": "playwright test --headed"
+    "test:unit:watch": "vitest"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
