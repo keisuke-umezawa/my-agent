@@ -1,9 +1,9 @@
 {
   "name": "My Agent Development",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "context": "."
-  },
+  "dockerComposeFile": ["docker-compose.yml", "../docker-compose.yml"],
+  "service": "frontend",
+  "workspaceFolder": "/app",
+  "runServices": ["frontend", "backend"],
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
@@ -24,7 +24,7 @@
       }
     }
   },
-  "forwardPorts": [5173],
+  "forwardPorts": [5173, 8000],
   "postCreateCommand": "npm install",
   "remoteUser": "node"
 }
