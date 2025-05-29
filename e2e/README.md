@@ -16,6 +16,8 @@ This will:
 2. Start the frontend and backend services
 3. Run the Playwright tests against the running services
 
+Note: The commands use `docker compose` (with a space) instead of `docker-compose` (with a hyphen) as this is the newer syntax supported by GitHub Actions.
+
 ## Test Structure
 
 - `tests/` - Contains all Playwright test files

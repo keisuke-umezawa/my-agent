@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "test": "docker-compose run --rm e2e",
-    "test:ui": "docker-compose run --rm e2e npx playwright test --ui",
-    "test:headed": "docker-compose run --rm e2e npx playwright test --headed"
+    "test": "docker compose run --rm e2e",
+    "test:ui": "docker compose run --rm e2e npx playwright test --ui",
+    "test:headed": "docker compose run --rm e2e npx playwright test --headed"
   },
   "devDependencies": {
     "@playwright/test": "^1.52.0"
