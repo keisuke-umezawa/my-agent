@@ -52,15 +52,45 @@ code .
 
 You now have a development environment with all necessary extensions and dependencies installed.
 
-### Local Environment Setup
+### Using Docker Compose
 
-If you prefer not to use DevContainer, you can set up your local environment with the following steps:
+For a quick setup of both frontend and backend services, you can use Docker Compose:
 
 1. Clone the repository:
 
 ```bash
 git clone https://github.com/keisuke-umezawa/my-agent.git
 cd my-agent
+```
+
+2. Build and start the containers:
+
+```bash
+docker-compose up --build
+```
+
+This will:
+- Build and start the frontend container (accessible at http://localhost:80)
+- Build and start the backend container (accessible at http://localhost:8000)
+- Set up networking between the containers
+
+To stop the containers, press `Ctrl+C` or run:
+
+```bash
+docker-compose down
+```
+
+### Local Environment Setup
+
+If you prefer not to use DevContainer or Docker Compose, you can set up your local environment with the following steps:
+
+#### Frontend Setup
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/keisuke-umezawa/my-agent.git
+cd my-agent/frontend
 ```
 
 2. Install dependencies:
@@ -75,7 +105,29 @@ npm install
 npm run dev
 ```
 
-You can now access the application at [http://localhost:5173](http://localhost:5173).
+You can now access the frontend application at [http://localhost:5173](http://localhost:5173).
+
+#### Backend Setup
+
+1. Navigate to the backend directory:
+
+```bash
+cd my-agent/backend
+```
+
+2. Install dependencies using Poetry:
+
+```bash
+poetry install
+```
+
+3. Start the backend server:
+
+```bash
+poetry run python app/main.py
+```
+
+You can now access the backend API at [http://localhost:8000](http://localhost:8000).
 
 ## Development Workflow
 
