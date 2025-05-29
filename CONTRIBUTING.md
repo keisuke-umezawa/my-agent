@@ -30,7 +30,7 @@ If you plan to use DevContainer, you'll also need:
 
 ### Using DevContainer
 
-Using DevContainer provides a consistent development environment with all dependencies pre-configured. The DevContainer uses the same Docker Compose setup as described below.
+Using DevContainer provides a consistent development environment with all dependencies pre-configured. The DevContainer automatically starts both frontend and backend services.
 
 1. Clone the repository:
 
@@ -51,9 +51,11 @@ code .
 4. Wait for VS Code to build and open the container. This may take a few minutes.
 
 You now have a development environment with all necessary extensions and dependencies installed. The DevContainer setup:
-- Uses the same Docker Compose configuration as the standalone Docker setup
-- Provides access to both frontend and backend services
+- Automatically starts both frontend and backend services
+- Frontend is accessible at http://localhost:5173
+- Backend API is accessible at http://localhost:8000
 - Includes all necessary VS Code extensions for development
+- Provides hot-reloading for both services during development
 
 ### Using Docker Compose
 
