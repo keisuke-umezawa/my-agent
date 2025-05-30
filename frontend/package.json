@@ -9,8 +9,8 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint --ext .ts,.tsx .",
     "preview": "vite preview",
-    "test:unit": "vitest run",
-    "test:unit:watch": "vitest"
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",

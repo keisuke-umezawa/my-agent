@@ -166,7 +166,7 @@ The project includes the following types of tests:
 1. Unit tests:
 
 ```bash
-npm run test:unit
+npm run test
 ```
 
 2. E2E tests:
