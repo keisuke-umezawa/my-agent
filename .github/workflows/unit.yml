@@ -44,3 +44,6 @@ jobs:
 
       - name: Install dependencies
         run: poetry install
+
+      - name: Run backend tests
+        run: poetry run pytest
