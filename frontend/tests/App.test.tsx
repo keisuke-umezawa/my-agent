@@ -1,9 +1,9 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import App from '../../src/App';
+import App from '../src/App';
 
-vi.mock('../../src/api', () => ({
+vi.mock('../src/api', () => ({
   checkHealth: vi.fn().mockResolvedValue({ status: 'ok', message: 'API is running' }),
   getUsers: vi.fn().mockResolvedValue([]),
   getTasks: vi.fn().mockResolvedValue([]),
