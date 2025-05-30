@@ -3,14 +3,14 @@ def test_get_users(client):
     assert response.status_code == 200
     data = response.json()
     assert len(data) == 2
-    assert data[0]["name"] == "John Doe"
+    assert data[0]["name"] == "User One"
 
 def test_get_user_by_id(client):
     response = client.get("/api/users/1")
     assert response.status_code == 200
     data = response.json()
-    assert data["name"] == "John Doe"
-    assert data["email"] == "john@example.com"
+    assert data["name"] == "User One"
+    assert data["email"] == "user1@example.com"
 
 def test_get_user_not_found(client):
     response = client.get("/api/users/999")
