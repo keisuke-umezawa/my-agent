@@ -35,14 +35,14 @@ class Task(BaseModel):
     user_id: int
 
 users_db = [
-    User(id=1, name="John Doe", email="john@example.com"),
-    User(id=2, name="Jane Smith", email="jane@example.com")
+    User(id=1, name="User One", email="user1@example.com"),
+    User(id=2, name="User Two", email="user2@example.com")
 ]
 
 tasks_db = [
-    Task(id=1, title="Learn FastAPI", description="Build a simple API", completed=True, user_id=1),
-    Task(id=2, title="Learn React", description="Build a frontend app", completed=False, user_id=1),
-    Task(id=3, title="Integrate FastAPI with React", description="Connect frontend to backend", completed=False, user_id=2)
+    Task(id=1, title="Task One", description="Description for task one", completed=True, user_id=1),
+    Task(id=2, title="Task Two", description="Description for task two", completed=False, user_id=1),
+    Task(id=3, title="Task Three", description="Description for task three", completed=False, user_id=2)
 ]
 
 @app.get("/api/health")
@@ -62,7 +62,7 @@ async def get_user(user_id: int):
 
 @app.post("/api/users", response_model=User)
 async def create_user(user: User):
-    new_id = max([u.id for u in users_db], default=0) + 1
+    new_id = max([u.id for u in users_db if u.id is not None], default=0) + 1
     new_user = User(id=new_id, name=user.name, email=user.email)
     users_db.append(new_user)
     return new_user
@@ -80,7 +80,7 @@ async def get_task(task_id: int):
 
 @app.post("/api/tasks", response_model=Task)
 async def create_task(task: Task):
-    new_id = max([t.id for t in tasks_db], default=0) + 1
+    new_id = max([t.id for t in tasks_db if t.id is not None], default=0) + 1
     new_task = Task(
         id=new_id,
         title=task.title,

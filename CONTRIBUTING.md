@@ -75,9 +75,13 @@ docker-compose up --build
 ```
 
 This will:
-- Build and start the frontend container (accessible at http://localhost:80)
+- Build and start the frontend container (accessible at http://localhost:80 in production mode)
 - Build and start the backend container (accessible at http://localhost:8000)
 - Set up networking between the containers
+
+Note: Port configurations differ between environments:
+- DevContainer: Frontend runs on port 5173 (development mode with hot reloading)
+- Docker Compose: Frontend runs on port 80 (production build)
 
 To stop the containers, press `Ctrl+C` or run:
 
