@@ -8,7 +8,7 @@ def test_get_task_by_id(client):
     response = client.get("/api/tasks/1")
     assert response.status_code == 200
     data = response.json()
-    assert data["title"] == "Learn FastAPI"
+    assert data["title"] == "Task One"
     assert data["completed"] == True
 
 def test_get_task_not_found(client):
