@@ -9,9 +9,6 @@ on:
 jobs:
   e2e-tests:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: e2e
 
     steps:
       - uses: actions/checkout@v3
@@ -21,5 +18,5 @@ jobs:
 
       - name: Build and run E2E tests
         run: |
-          docker compose build
-          docker compose run --rm e2e
+          docker compose --profile testing build
+          docker compose --profile testing run --rm e2e

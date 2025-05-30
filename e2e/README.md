@@ -22,7 +22,8 @@ Note: The commands use `docker compose` (with a space) instead of `docker-compos
 
 - `tests/` - Contains all Playwright test files
 - `playwright.config.ts` - Configuration for Playwright
-- `docker-compose.yml` - Docker Compose configuration for the test environment
+
+The Docker Compose configuration for the test environment is located in the root directory's `docker-compose.yml` file, which includes a dedicated `e2e` service with the `testing` profile.
 
 ## Development
 
