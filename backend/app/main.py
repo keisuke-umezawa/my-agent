@@ -9,9 +9,7 @@ load_dotenv()
 PORT = os.getenv("PORT", "8000")
 
 app = FastAPI(
-    title="My Agent API",
-    description="FastAPI backend for My Agent",
-    version="0.1.0"
+    title="My Agent API", description="FastAPI backend for My Agent", version="0.1.0"
 )
 
 app.add_middleware(
@@ -39,16 +37,31 @@ class Task(BaseModel):
 
 users_db = [
     User(id=1, name="User One", email="user1@example.com"),
-    User(id=2, name="User Two", email="user2@example.com")
+    User(id=2, name="User Two", email="user2@example.com"),
 ]
 
 tasks_db = [
-    Task(id=1, title="Task One",
-         description="Description for task one", completed=True, user_id=1),
-    Task(id=2, title="Task Two",
-         description="Description for task two", completed=False, user_id=1),
-    Task(id=3, title="Task Three",
-         description="Description for task three", completed=False, user_id=2)
+    Task(
+        id=1,
+        title="Task One",
+        description="Description for task one",
+        completed=True,
+        user_id=1,
+    ),
+    Task(
+        id=2,
+        title="Task Two",
+        description="Description for task two",
+        completed=False,
+        user_id=1,
+    ),
+    Task(
+        id=3,
+        title="Task Three",
+        description="Description for task three",
+        completed=False,
+        user_id=2,
+    ),
 ]
 
 
@@ -99,7 +112,7 @@ async def create_task(task: Task):
         title=task.title,
         description=task.description,
         completed=task.completed,
-        user_id=task.user_id
+        user_id=task.user_id,
     )
     tasks_db.append(new_task)
     return new_task
@@ -114,7 +127,7 @@ async def update_task(task_id: int, task: Task):
                 title=task.title,
                 description=task.description,
                 completed=task.completed,
-                user_id=task.user_id
+                user_id=task.user_id,
             )
             tasks_db[i] = updated_task
             return updated_task

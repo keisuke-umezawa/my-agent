@@ -24,7 +24,7 @@ def test_create_task(client):
         "title": "New Task",
         "description": "Test task",
         "completed": False,
-        "user_id": 1
+        "user_id": 1,
     }
     response = client.post("/api/tasks", json=new_task)
     assert response.status_code == 200
@@ -38,7 +38,7 @@ def test_update_task(client):
         "title": "Updated Task",
         "description": "Updated description",
         "completed": True,
-        "user_id": 1
+        "user_id": 1,
     }
     response = client.put("/api/tasks/1", json=updated_task)
     assert response.status_code == 200
@@ -52,7 +52,7 @@ def test_update_task_not_found(client):
         "title": "Updated Task",
         "description": "Updated description",
         "completed": True,
-        "user_id": 1
+        "user_id": 1,
     }
     response = client.put("/api/tasks/999", json=updated_task)
     assert response.status_code == 404
