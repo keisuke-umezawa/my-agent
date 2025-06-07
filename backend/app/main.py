@@ -119,7 +119,3 @@ async def update_task(task_id: int, task: Task):
             tasks_db[i] = updated_task
             return updated_task
     raise HTTPException(status_code=404, detail="Task not found")
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=int(PORT), reload=True)
