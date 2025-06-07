@@ -8,9 +8,7 @@ from pydantic import BaseModel
 load_dotenv()
 PORT = os.getenv("PORT", "8000")
 
-app = FastAPI(
-    title="My Agent API", description="FastAPI backend for My Agent", version="0.1.0"
-)
+app = FastAPI(title="API", description="FastAPI backend", version="0.1.0")
 
 app.add_middleware(
     CORSMiddleware,
