@@ -1,50 +1,113 @@
-# React + TypeScript + Vite
+# Full-Stack Application Template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a template repository for building full-stack web applications with a React frontend and FastAPI backend.
 
-Currently, two official plugins are available:
+## Repository Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `frontend/` - React + TypeScript + Vite frontend application
+- `backend/` - FastAPI Python backend application
+- `e2e/` - End-to-end tests using Playwright
+- `.github/` - GitHub workflows and templates
+- `docker-compose.yml` - Docker Compose configuration for local development and testing
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Prerequisites
 
-- Configure the top-level `parserOptions` property like this:
+- Node.js (v18+)
+- Python (v3.9+)
+- Poetry (for Python dependency management)
+- Docker and Docker Compose (optional, for containerized development)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Setup
+
+1. Clone this repository:
+```bash
+git clone <repository-url>
+cd <repository-name>
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+2. Set up the frontend:
+```bash
+cd frontend
+npm install
 ```
+
+3. Set up the backend:
+```bash
+cd backend
+poetry install
+```
+
+4. Set up end-to-end tests:
+```bash
+cd e2e
+npm install
+```
+
+## Development
+
+### Running the Frontend
+
+```bash
+cd frontend
+npm run dev
+```
+
+The frontend development server will be available at http://localhost:5173
+
+### Running the Backend
+
+```bash
+cd backend
+poetry run ./run.sh
+```
+
+The backend API will be available at http://localhost:8000
+
+### API Documentation
+
+Once the backend is running, you can access the auto-generated API documentation at:
+- Swagger UI: http://localhost:8000/docs
+- ReDoc: http://localhost:8000/redoc
+
+## Testing
+
+### Backend Tests
+
+```bash
+cd backend
+poetry run pytest
+```
+
+### Frontend Tests
+
+```bash
+cd frontend
+npm run test
+```
+
+### End-to-End Tests
+
+```bash
+cd e2e
+npm run test
+```
+
+## Docker Development
+
+You can also use Docker Compose to run the entire stack:
+
+```bash
+docker compose up
+```
+
+This will start the frontend, backend, and a development database.
+
+## Contributing
+
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to contribute to this project.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
