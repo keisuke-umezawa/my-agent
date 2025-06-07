@@ -22,10 +22,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 class User(BaseModel):
     id: Optional[int] = None
     name: str
     email: str
+
 
 class Task(BaseModel):
     id: Optional[int] = None
@@ -34,24 +36,31 @@ class Task(BaseModel):
     completed: bool = False
     user_id: int
 
+
 users_db = [
     User(id=1, name="User One", email="user1@example.com"),
     User(id=2, name="User Two", email="user2@example.com")
 ]
 
 tasks_db = [
-    Task(id=1, title="Task One", description="Description for task one", completed=True, user_id=1),
-    Task(id=2, title="Task Two", description="Description for task two", completed=False, user_id=1),
-    Task(id=3, title="Task Three", description="Description for task three", completed=False, user_id=2)
+    Task(id=1, title="Task One",
+         description="Description for task one", completed=True, user_id=1),
+    Task(id=2, title="Task Two",
+         description="Description for task two", completed=False, user_id=1),
+    Task(id=3, title="Task Three",
+         description="Description for task three", completed=False, user_id=2)
 ]
+
 
 @app.get("/api/health")
 async def health_check():
     return {"status": "ok", "message": "API is running"}
 
+
 @app.get("/api/users", response_model=List[User])
 async def get_users():
     return users_db
+
 
 @app.get("/api/users/{user_id}", response_model=User)
 async def get_user(user_id: int):
@@ -60,6 +69,7 @@ async def get_user(user_id: int):
             return user
     raise HTTPException(status_code=404, detail="User not found")
 
+
 @app.post("/api/users", response_model=User)
 async def create_user(user: User):
     new_id = max([u.id for u in users_db if u.id is not None], default=0) + 1
@@ -67,9 +77,11 @@ async def create_user(user: User):
     users_db.append(new_user)
     return new_user
 
+
 @app.get("/api/tasks", response_model=List[Task])
 async def get_tasks():
     return tasks_db
+
 
 @app.get("/api/tasks/{task_id}", response_model=Task)
 async def get_task(task_id: int):
@@ -77,6 +89,7 @@ async def get_task(task_id: int):
         if task.id == task_id:
             return task
     raise HTTPException(status_code=404, detail="Task not found")
+
 
 @app.post("/api/tasks", response_model=Task)
 async def create_task(task: Task):
@@ -90,6 +103,7 @@ async def create_task(task: Task):
     )
     tasks_db.append(new_task)
     return new_task
+
 
 @app.put("/api/tasks/{task_id}", response_model=Task)
 async def update_task(task_id: int, task: Task):
